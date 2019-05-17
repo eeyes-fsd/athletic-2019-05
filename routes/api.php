@@ -2,17 +2,23 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+$api = app('Dingo\Api\Routing\Router');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$api->version('v1', [
+    'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => 'bindings',
+], function ($api){
+    $api->get('games', 'GamesController@index')
+        ->name('api.games.index');
+    $api->get('games/{game}', 'GamesController@show')
+        ->name('api.games.index');
+    $api->put('games/{game}', 'GamesController@update')
+        ->name('api.games.update');
+    $api->delete('games/{game}', 'GamesController@destroy')
+        ->name('api.groups.delete');
+    $api->get('verify', function (Request $request){
+        return response()->json([
+            'status' => $request->get('password') === env('ADMIN_PASSWORD')
+        ]);
+    });
 });

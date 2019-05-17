@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "21cb87ce-ea21-4acd-bc62-6b6b77960fdc",
+		"name": "Athletic",
+		"description": "第四十一届陕西省大学生运动会成绩页Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取赛事列表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_host}}/games?unit=1",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"games"
+					],
+					"query": [
+						{
+							"key": "unit",
+							"value": "1"
+						}
+					]
+				},
+				"description": "提供可选参数unit以过滤某一单元的赛事列表"
+			},
+			"response": [
+				{
+					"name": "获取赛事列表",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}/games?",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"games"
+							],
+							"query": [
+								{
+									"key": "unit",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 16 May 2019 03:22:41 +0800"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 15 May 2019 19:22:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.3.0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "private, must-revalidate"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "ETag",
+							"value": "\"29cf4d0d534c5e7cf956b45f0cb367f9f4f61d83\""
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"game1\",\n        \"begin_at\": \"2019-05-19 10:00:00\",\n        \"participants\": 20,\n        \"groups\": 5\n    },\n    {\n        \"id\": 2,\n        \"name\": \"game2\",\n        \"begin_at\": \"2019-05-19 13:00:00\",\n        \"participants\": 20,\n        \"groups\": 5\n    }\n]"
+				},
+				{
+					"name": "获取赛事列表with filter unit",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}/games?unit=1",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"games"
+							],
+							"query": [
+								{
+									"key": "unit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 16 May 2019 03:23:47 +0800"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 15 May 2019 19:23:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.3.0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "private, must-revalidate"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "ETag",
+							"value": "\"e40edbd22ccccdcc7979a8225f82181bd41eddff\""
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"game1\",\n        \"begin_at\": \"2019-05-19 10:00:00\",\n        \"participants\": 20,\n        \"groups\": 5\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "获取某个赛事详情",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_host}}/games/{{game_id}}?",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"games",
+						"{{game_id}}"
+					],
+					"query": [
+						{
+							"key": "group",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				},
+				"description": "赛事ID在赛事列表中返回，提供group参数以过滤某个小组的赛事信息"
+			},
+			"response": [
+				{
+					"name": "获取某个赛事详情",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}/games/{{game_id}}?",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"games",
+								"{{game_id}}"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 16 May 2019 03:29:19 +0800"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 15 May 2019 19:29:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.3.0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "private, must-revalidate"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "ETag",
+							"value": "\"23757efa23dcdb3f756bd177e9a3858bea276e58\""
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"group\": 2,\n        \"no\": 1940,\n        \"group_rank\": 1,\n        \"name\": \"AAA\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.03,\n        \"remarks\": null\n    },\n    {\n        \"group\": 2,\n        \"no\": 1940,\n        \"group_rank\": 1,\n        \"name\": \"DDD\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.04,\n        \"remarks\": null\n    },\n    {\n        \"group\": 2,\n        \"no\": 1941,\n        \"group_rank\": 2,\n        \"name\": \"BBB\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.05,\n        \"remarks\": null\n    },\n    {\n        \"group\": 2,\n        \"no\": 1941,\n        \"group_rank\": 2,\n        \"name\": \"EEE\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.06,\n        \"remarks\": null\n    },\n    {\n        \"group\": 2,\n        \"no\": 1939,\n        \"group_rank\": 3,\n        \"name\": \"CCC\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.07,\n        \"remarks\": null\n    },\n    {\n        \"group\": 2,\n        \"no\": 1939,\n        \"group_rank\": 3,\n        \"name\": \"FFF\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.08,\n        \"remarks\": null\n    }\n]"
+				},
+				{
+					"name": "获取某个赛事详情 with filter group",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}/games/{{game_id}}?group=1",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"games",
+								"{{game_id}}"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 16 May 2019 03:28:56 +0800"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 15 May 2019 19:28:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.3.0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "private, must-revalidate"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "ETag",
+							"value": "\"ffc7dc0a2e85c8cdcf3df4cb2def65d488b6d521\""
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"group\": 2,\n        \"no\": 1940,\n        \"group_rank\": 1,\n        \"name\": \"AAA\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.03,\n        \"remarks\": null\n    },\n    {\n        \"group\": 2,\n        \"no\": 1941,\n        \"group_rank\": 2,\n        \"name\": \"BBB\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.05,\n        \"remarks\": null\n    },\n    {\n        \"group\": 2,\n        \"no\": 1939,\n        \"group_rank\": 3,\n        \"name\": \"CCC\",\n        \"team\": \"西安交通大学\",\n        \"performance\": 3.07,\n        \"remarks\": null\n    }\n]"
+				}
+			]
+		}
+	]
+}

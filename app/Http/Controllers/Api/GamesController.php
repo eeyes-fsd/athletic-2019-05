@@ -70,13 +70,14 @@ class GamesController extends Controller
         $group = $game->reverse_sort ? $group->sortByDesc('performance') : $group->sortBy('performance');
         foreach ($group as $participant) {
             $data[] = [
-                'group' => $participant['group'], //小组
-                'no' => $participant['no'], //选手号码
-                'group_rank' => $participant['group_rank'], //小组排名
-                'name' => $participant['name'], //姓名
-                'team' => $participant['team'], //单位
-                'performance' => $participant['performance'], //成绩
-                'remarks' => $participant['remarks'], //备注
+                'group' => $participant['group'],
+                'no' => $participant['no'],
+                'group_rank' => $participant['group_rank'],
+                'name' => $participant['name'],
+                'team' => $participant['team'],
+                'track' => $participant['track'],
+                'performance' => $participant['performance'],
+                'remarks' => $participant['remarks'],
             ];
         }
 

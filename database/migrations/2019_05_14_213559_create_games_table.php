@@ -17,9 +17,9 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->boolean('reverse_sort');
             $table->string('name')->comment('赛事名称');
-            $table->timestamp('begin_at')->comment('开始时间');
-            $table->integer('participants_count')->comment('参赛人数');
-            $table->integer('groups_count')->comment('参赛组数');
+            $table->timestamp('begin_at')->nullable()->comment('开始时间');
+            $table->integer('participants_count')->nullable()->comment('参赛人数');
+            $table->integer('groups_count')->nullable()->comment('参赛组数');
             $table->timestamps();
         });
     }

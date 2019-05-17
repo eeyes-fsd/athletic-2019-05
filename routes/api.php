@@ -18,7 +18,7 @@ $api->version('v1', [
         ->name('api.groups.delete');
     $api->get('verify', function (Request $request){
         return response()->json([
-            'status' => $request->get('password') === env('ADMIN_PASSWORD')
+            'status' => $request->header('password') === env('ADMIN_PASSWORD')
         ]);
     });
 });

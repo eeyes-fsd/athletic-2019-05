@@ -75,6 +75,7 @@ class GamesController extends Controller
                 'group_rank' => $participant['group_rank'],
                 'name' => $participant['name'],
                 'team' => $participant['team'],
+                'track' => $participant['track'],
                 'performance' => $participant['performance'],
                 'remarks' => $participant['remarks'],
             ];

@@ -93,17 +93,26 @@ class GamesController extends Controller
         $entities = $request->all();
         $groupIds = [];
         foreach ($entities as $entity) {
-            $groupIds[$entity->no] = true;
+            $groupIds[$entity['group']] = true;
         }
         $groupIds = array_keys($groupIds);
 
         $groups = array_map(function ($no) use ($entities) {
             return array_filter($entities, function ($item) use ($no) {
-                return $item->no === $no;
+                return $item['group'] === $no;
             });
         }, $groupIds);
 
-        $game->groups()->saveMany($groups);
+        $resultData = collect();
+        foreach ($groups as $value) {
+            $value = array_values($value);
+            $group = new Group([
+                'no' => $value[0]['group'],
+                'content' => $value,
+            ]);
+            $resultData->push($group);
+        }
+        $game->groups()->saveMany($resultData);
 
         return $this->response->created();
     }

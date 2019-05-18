@@ -25,10 +25,10 @@ class GamesController extends Controller
     public function index(Request $request)
     {
         if ($request->has('unit')) {
-            $unit_limit = Carbon::create(2019, 05, 19)->addHours(12 * ($request->get('unit') - 1));
-            $games = Game::whereBetween('begin_at', [$unit_limit->toDateTimeString(), $unit_limit->addHours(12)->toDateTimeString()])->get()->sortBy('begin_at');
+            $unit_limit = Carbon::create(2019, 05, 19)->addHours(12 * ($request->get('unit') - 1) + 1);
+            $games = Game::whereBetween('begin_at', [$unit_limit->toDateTimeString(), $unit_limit->addHours(12)->toDateTimeString()])->get()->sortBy('id');
         } else {
-            $games = Game::all()->sortBy('begin_at');
+            $games = Game::all()->sortBy('id');
         }
 
         $data = [];
@@ -36,11 +36,10 @@ class GamesController extends Controller
             $tmp = [
                 'id' => $game->id,
                 'name' => $game->name,
-                'begin_at' => $game->begin_at->toDateTimeString(),
+                'begin_at' => $game->begin_at ? $game->begin_at->toDateTimeString() : null,
                 'participants' => $game->participants_count,
                 'groups' => $game->groups_count,
             ];
-
             $data[] = $tmp;
         }
 

@@ -90,23 +90,18 @@ class GamesController extends Controller
      */
     public function update(Game $game, Request $request)
     {
-        $data = [];
-        foreach ($request->post('entities') as $entity) {
-            if (!isset($data[$entity['group']])) {
-                unset($entity['group']);
-                $data[$entity['group']] = [$entity];
-            }
-            unset($entity['group']);
-            $data[$entity['group']] = array_push($data[$entity['group']], $entity);
+        $entities = $request->all();
+        $groupIds = [];
+        foreach ($entities as $entity) {
+            $groupIds[$entity->no] = true;
         }
+        $groupIds = array_keys($groupIds);
 
-        $groups = collect();
-        foreach ($data as $key => $datum) {
-            $groups->push(new Group([
-                'no' => $key,
-                'content' => $datum,
-            ]));
-        }
+        $groups = array_map(function ($no) use ($entities) {
+            return array_filter($entities, function ($item) use ($no) {
+                return $item->no === $no;
+            });
+        }, $groupIds);
 
         $game->groups()->saveMany($groups);
 
